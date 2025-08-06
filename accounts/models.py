@@ -14,3 +14,7 @@ class Profile(models.Model):
     profile_photo = models.ImageField(upload_to=AccountsUtils.profile_image_path, blank=True, default='profile_pics/default.webp')
     cover_photo = models.ImageField(upload_to=AccountsUtils.cover_image_path, blank=True, default='cover_pics/default.webp')
     address = models.TextField(blank=True, null=True)
+
+    @property
+    def full_name(self):
+        return f"{self.user.first_name} {self.user.last_name}"
